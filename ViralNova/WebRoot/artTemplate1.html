@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <title>artTemplate1.html</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+	
+	<script src="template.js"></script>
+	
+	<style type="text/css">
+            body{
+                letter-spacing:1px;
+                //text-align:center;
+            }
+            .title{
+                color:#D55F52;
+                padding : 10px 0px 10px 0px;
+            }
+            .subtitle{
+                background-color:#FAFAFA;
+                padding:2px;
+                margin-top:5px;
+            }
+            .divtop{
+                background-color:#F0F0F0;
+                margin : 10px 0px 10px 0px;
+            }        
+            .divimg{
+                margin : 10px 0px 10px 0px;
+            }
+            td.tdclass1{
+                background-color:#C54549;
+                text-align:center;
+                width:100px;
+                height : 22px;
+                color:#FFFFFF;
+                font-size : 12px;
+            }
+            table{
+                width : 100%;
+            }
+            td.tdclass2{
+                background-color:#FAFAFA;
+                text-align:center;
+                width:100px;
+                height : 50px;
+                color:#9B9B9B;
+            }
+            td .span1{
+                font-size : 12px;
+                color : #CB5D60;
+            }
+        </style>
+        
+        <script id="stocktpl" type="text/html">
+    	<div class="title"><%=title%></div>
+    	<div class="subtitle"><%=date%> 作者</div>
+     	<div class="divtop">
+        <table>
+             <tr>
+                 <td class="tdclass1">评级</td><td class="tdclass1">市值</td><td class="tdclass1">近三月涨幅</td>
+             </tr>
+             <tr>
+                 <td class="tdclass2"><%=rating%></td><td class="tdclass2"><%=marketValue%>亿 <span class="span1">RMB</span></td><td class="tdclass2"><%=increase%>%</td>
+             </tr>
+             
+             <tr>
+                 <td class="tdclass1">最新收盘价</td><td class="tdclass1">目标价</td><td class="tdclass1">预期收益率</td>
+             </tr>
+             <tr>
+                 <td class="tdclass2"><%=closingPrice%> <sapn class="span1">RMB</span></td><td class="tdclass2"><%=targetPrice%> <span class="span1">RMB</span></td><td class="tdclass2"><%=expectedReturn%>%</td>
+             </tr>
+         </table>
+     	</div>
+     
+     	<div class="divimg">
+         <img src="http://s10.sinaimg.cn/mw690/001HvAkMgy6GWxCZdCp59&amp;690" alt="" href="#">
+     	</div>
+     
+     	<div><%=content%></div>
+		</script>
+  </head>
+  
+  <body>
+    <div id="contentTop"></div>
+    <script>
+     var data = {
+        "id": 100001,
+        "date": "2014-01-20",
+        "ticker": "300037",
+        "title": "特斯拉的小伙伴，新能源的领头羊",
+        "abstract": "目前市场主题投资原因在于特斯拉",
+        "rating": "买入",
+        "increase": "15.54",
+        "content": "特斯拉汽车公司，一家生产和销售电动汽车以及零件的公司，只制造纯电动车，成立于2003年，总部设在了美国加州的硅谷地带[1]。其创始人马丁·艾伯哈德是硅谷工程师、资深车迷，而投资人是SpaceX，Paypal的创始人埃隆·马斯克。[2]\n特斯拉汽车公司是世界上第一个采用锂离子电池的电动车公司。其推出的首部电动车为Roadster[1]。\n特斯拉Tesla汽车集独特的造型、高效的加速、良好的操控性能与先进的技术为一身，从而使其成为公路上最快且最为节省燃料的车子。[3]特斯拉得名于美国物理学家以及电力工程师尼古拉-特斯拉的塞尔维亚姓。[4]",
+        "stockName": "新宙邦",
+        "stockImageUrl": "http://",
+        "marketValue": "322.0",
+        "closingPrice": "28.47",
+        "targetPrice": "35.6",
+        "expectedReturn": "25.04"
+    }; 
+    
+    // parse the returned json string
+    var data = JSON.parse(window.java.getJson());
+
+    var html = template.render('stocktpl', data);
+    document.getElementById('contentTop').innerHTML = html;
+    </script>
+  </body>
+</html>
